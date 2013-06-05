@@ -17,12 +17,12 @@ clean:
 	rm -f *.o *.so *.tmp
 
 install:
-	mkdir -m 0755 -p $(bindir)
-	rm -f $(bindir)/wcwidth-cjk
-	cp wcwidth-cjk $(bindir)/
-	mkdir -m 0755 -p $(libdir)
-	rm -f $(libdir)/wcwidth-cjk.so
-	cp wcwidth-cjk.so $(libdir)/
+	mkdir -m 0755 -p $(DESTDIR)$(bindir)
+	rm -f $(DESTDIR)$(bindir)/wcwidth-cjk
+	cp wcwidth-cjk $(DESTDIR)$(bindir)/
+	mkdir -m 0755 -p $(DESTDIR)$(libdir)
+	rm -f $(DESTDIR)$(libdir)/wcwidth-cjk.so
+	cp wcwidth-cjk.so $(DESTDIR)$(libdir)/
 
 build: $(BUILD_TARGETS)
 
