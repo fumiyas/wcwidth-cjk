@@ -50,6 +50,7 @@ References
     + http://d.hatena.ne.jp/vmi/20090526/p1
     + http://d.hatena.ne.jp/vmi/20090604/p1
     + http://ta.ps.st/d/1331733974.html
+    + http://vdr.jp/d/20070326.html
   * `wcwidth.c`: 
     + http://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c
     + ftp://ftp.mutt.org/mutt/devel/
