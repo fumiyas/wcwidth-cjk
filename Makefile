@@ -29,8 +29,6 @@ wcwidth-cjk: wcwidth-cjk.sh
 	chmod +x $@.tmp
 	mv $@.tmp $@
 
-wcwidth-cjk.o: wcwidth-cjk.c
-
 wcwidth-cjk.so: wcwidth.o
 	$(LDSHARED) $(LDFLAGS) -o $@ wcwidth.o
 
