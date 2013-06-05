@@ -24,7 +24,7 @@ Usage
 
 Run a command with `$LD_PRELOAD`-able library:
 
-    $ export LD_PRELOAD=/usr/local/lib/wcwidth.so
+    $ export LD_PRELOAD=/usr/local/lib/wcwidth-cjk.so
     $ zsh
     ...
 
