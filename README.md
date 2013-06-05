@@ -36,6 +36,12 @@ Run a command with `$LD_PRELOAD`-able library:
     $ zsh
     ...
 
+or:
+
+    $ eval `/usr/local/bin/wcwidth-cjk --sh-init`
+    $ zsh
+    ...
+
 Run a command via wrapper script:
 
     $ /usr/local/bin/wcwidth-cjk zsh
