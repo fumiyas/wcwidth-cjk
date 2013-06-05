@@ -18,8 +18,10 @@ clean:
 
 install:
 	mkdir -m 0755 -p $(bindir)
+	rm -f $(bindir)/wcwidth-cjk
 	cp wcwidth-cjk $(bindir)/
 	mkdir -m 0755 -p $(libdir)
+	rm -f $(libdir)/wcwidth-cjk.so
 	cp wcwidth-cjk.so $(libdir)/
 
 build: $(BUILD_TARGETS)
