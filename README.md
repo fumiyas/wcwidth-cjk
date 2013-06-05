@@ -22,10 +22,10 @@ fixing "East Asian Ambiguous Width chars" problem.
 How to build
 ---------------------------------------------------------------------
 
-   $ make
-   ...
-   $ sudo make install
-   ...
+    $ make
+    ...
+    $ sudo make install
+    ...
 
 Usage
 ---------------------------------------------------------------------
