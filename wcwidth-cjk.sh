@@ -5,7 +5,15 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
-LD_PRELOAD="${LD_PRELOAD:+$LD_PRELOAD:}@libdir@/wcwidth-cjk.so"
+wcwidth_cjk_so="@libdir@/wcwidth-cjk.so"
+
+case ":$LD_PRELOAD:" in
+*":$wcwidth_cjk_so:"*)
+  ;;
+*)
+  LD_PRELOAD="${LD_PRELOAD:+$LD_PRELOAD:}$wcwidth_cjk_so"
+  ;;
+esac
 
 if [ x"$1" = x"--sh-init" ]; then
   echo "LD_PRELOAD='$LD_PRELOAD'"
