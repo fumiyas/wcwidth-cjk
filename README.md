@@ -51,6 +51,8 @@ References
 ---------------------------------------------------------------------
 
   * East Asian Ambiguous Width chars problem
+    + http://sourceware.org/bugzilla/show_bug.cgi?id=4335
+    + http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=471021
     + http://d.hatena.ne.jp/vmi/20090523/p1
     + http://d.hatena.ne.jp/vmi/20090524/p1
     + http://d.hatena.ne.jp/vmi/20090526/p1

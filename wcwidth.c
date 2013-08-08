@@ -274,7 +274,6 @@ int wcwidth_cjk(wchar_t ucs)
   return wcwidth_ucs(ucs);
 }
 
-#if 0 /* original */
 int wcswidth_cjk(const wchar_t *pwcs, size_t n)
 {
   int w, width = 0;
@@ -287,4 +286,4 @@ int wcswidth_cjk(const wchar_t *pwcs, size_t n)
 
   return width;
 }
-#endif
+
