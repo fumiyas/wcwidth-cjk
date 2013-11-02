@@ -1,6 +1,8 @@
 BUILD_TARGETS = wcwidth-cjk wcwidth-cjk.so
 
 CC = gcc
+#CC = gcc46 # For FreeBSD
+#CC = clang # For FreeBSD 10, suggested
 CFLAGS = -O2 -Wall -fPIC -Dwcwidth_cjk=wcwidth -Dwcswidth_cjk=wcswidth
 LDSHARED = $(CC) -shared
 LDFLAGS =
