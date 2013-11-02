@@ -200,7 +200,7 @@ int wcswidth_ucs(const wchar_t *pwcs, size_t n)
  */
 
 /* For FreeBSD version check */
-#if (defined (_SYS__TYPES_H_) && defined(__FreeBSD__))
+#if defined(__FreeBSD__)
 #include <sys/param.h>
 #endif /* FreeBSD version check */ 
 
