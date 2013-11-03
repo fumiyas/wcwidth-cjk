@@ -9,7 +9,7 @@ Run command with CJK-friendly wcwidth(3) to fix ambiguous width chars
 What's this?
 ---------------------------------------------------------------------
 
-This is a `$LD_REPLOAD`-able library and a wrapper script to
+This is a `$LD_PRELOAD`-able library and a wrapper script to
 run a command with CJK-friendly `wcwidth`(3) implementation for
 fixing "East Asian Ambiguous Width chars" problem.
 
