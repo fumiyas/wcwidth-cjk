@@ -27,6 +27,10 @@ How to build
     $ sudo make install
     ...
 
+If you are on Mac OS X, apply the bundled patch before `make`:
+
+    $ patch -p1 <wcwidth-cjk-for-macosx.patch
+
 Usage
 ---------------------------------------------------------------------
 
