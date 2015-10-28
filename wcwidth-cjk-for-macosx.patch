@@ -1,18 +1,20 @@
-diff -u wcwidth-cjk-master.orig/Makefile wcwidth-cjk-master/Makefile
---- wcwidth-cjk-master.orig/Makefile	2013-08-08 23:53:35.000000000 +0900
-+++ wcwidth-cjk-master/Makefile	2014-03-12 23:34:50.000000000 +0900
-@@ -1,8 +1,8 @@
+diff -u wcwidth-cjk.orig/Makefile wcwidth-cjk/Makefile
+--- wcwidth-cjk.orig/Makefile	2015-10-28 18:39:39.000000000 +0900
++++ wcwidth-cjk/Makefile	2015-10-28 18:41:38.000000000 +0900
+@@ -1,10 +1,10 @@
 -BUILD_TARGETS = wcwidth-cjk wcwidth-cjk.so
 +BUILD_TARGETS = wcwidth-cjk libwcwidth-cjk.dylib
  
  CC = gcc
+ #CC = gcc46 # For FreeBSD
+ #CC = clang # For FreeBSD 10, suggested
  CFLAGS = -O2 -Wall -fPIC -Dwcwidth_cjk=wcwidth -Dwcswidth_cjk=wcswidth
 -LDSHARED = $(CC) -shared
 +LDSHARED = $(CC) -dynamiclib
  LDFLAGS =
  
  prefix = /usr/local
-@@ -14,15 +14,15 @@
+@@ -16,15 +16,15 @@
  
  clean:
  	rm -f $(BUILD_TARGETS)
@@ -31,7 +33,7 @@ diff -u wcwidth-cjk-master.orig/Makefile wcwidth-cjk-master/Makefile
  
  build: $(BUILD_TARGETS)
  
-@@ -31,6 +31,6 @@
+@@ -33,6 +33,6 @@
  	chmod +x $@.tmp
  	mv $@.tmp $@
  
@@ -39,9 +41,9 @@ diff -u wcwidth-cjk-master.orig/Makefile wcwidth-cjk-master/Makefile
 +libwcwidth-cjk.dylib: wcwidth.o
  	$(LDSHARED) $(LDFLAGS) -o $@ wcwidth.o
  
-diff -u wcwidth-cjk-master.orig/wcwidth-cjk.sh wcwidth-cjk-master/wcwidth-cjk.sh
---- wcwidth-cjk-master.orig/wcwidth-cjk.sh	2013-08-08 23:53:35.000000000 +0900
-+++ wcwidth-cjk-master/wcwidth-cjk.sh	2014-03-12 23:29:32.000000000 +0900
+diff -u wcwidth-cjk.orig/wcwidth-cjk.sh wcwidth-cjk/wcwidth-cjk.sh
+--- wcwidth-cjk.orig/wcwidth-cjk.sh	2015-10-28 18:37:37.000000000 +0900
++++ wcwidth-cjk/wcwidth-cjk.sh	2015-10-28 18:41:38.000000000 +0900
 @@ -5,23 +5,25 @@
    exit 1
  fi
