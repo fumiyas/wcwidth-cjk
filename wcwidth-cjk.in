@@ -1,0 +1,41 @@
+#!/bin/sh
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+bindir=@bindir@
+libdir=@libdir@
+
+wcwidth_cjk_so="$libdir/libwcwidth-cjk.@SHARED_LIB_EXT@"
+
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 COMMAND [ARGUMENT ...]" 1>&2
+  exit 1
+fi
+
+case ":$@LD_PRELOAD@:" in
+    *":$wcwidth_cjk_so:"*)
+        ;;
+    *)
+        @LD_PRELOAD@="${@LD_PRELOAD@:+$@LD_PRELOAD@:}$wcwidth_cjk_so"
+        ;;
+esac
+
+if [ x"$1" = x"--sh-init" ]; then
+    echo "@LD_PRELOAD@='$@LD_PRELOAD@'"
+    echo "export @LD_PRELOAD@"
+    if [ -n "@DYLD_FORCE_FLAT_NAMESPACE@" ]; then
+        echo "@DYLD_FORCE_FLAT_NAMESPACE@=1"
+        echo "export @DYLD_FORCE_FLAT_NAMESPACE@"
+    fi
+    exit 0
+fi
+
+export @LD_PRELOAD@
+if [ -n "@DYLD_FORCE_FLAT_NAMESPACE@" ]; then
+    @DYLD_FORCE_FLAT_NAMESPACE@=1
+    export @DYLD_FORCE_FLAT_NAMESPACE@
+fi
+
+exec "$@"
+exit 1
+
