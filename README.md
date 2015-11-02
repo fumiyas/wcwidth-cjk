@@ -22,14 +22,12 @@ fixing "East Asian Ambiguous Width chars" problem.
 How to build
 ---------------------------------------------------------------------
 
+Required packages: autoconf, automake, libtool
+
+    $ autoconf -vfi
+    $ configure --prefix=/usr/local/
     $ make
-    ...
     $ sudo make install
-    ...
-
-If you are on Mac OS X, apply the bundled patch before `make`:
-
-    $ patch -p1 <wcwidth-cjk-for-macosx.patch
 
 Usage
 ---------------------------------------------------------------------
@@ -70,4 +68,3 @@ References
     + https://twitter.com/ttkzw/status/341958235814768640
     + https://twitter.com/ttkzw/status/341954474333581313
     + https://twitter.com/ttkzw/status/341960339300159488
-
