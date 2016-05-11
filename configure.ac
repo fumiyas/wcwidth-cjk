@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.59])
-AC_INIT([wcwidth-cjk], [0.99])
+AC_INIT([wcwidth-cjk], [0.99], [https://github.com/fumiyas/wcwidth-cjk])
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_MACRO_DIRS([m4])
 AC_CONFIG_SRCDIR([wcwidth.c])
