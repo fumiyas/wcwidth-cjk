@@ -1,7 +1,7 @@
 Run command with CJK-friendly wcwidth(3) to fix ambiguous width chars
 ======================================================================
 
-  * Copyright (c) 2013-2015 SATOH Fumiyasu @ OSS Technology Corp., Japan
+  * Copyright (c) 2013-2016 SATOH Fumiyasu @ OSS Technology Corp., Japan
   * License: BSD-like (2-clause, see wcwidth.c)
   * URL: <https://GitHub.com/fumiyas/wcwidth-cjk>
   * Twitter: <https://twitter.com/satoh_fumiyasu>
