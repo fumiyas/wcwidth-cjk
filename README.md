@@ -22,9 +22,9 @@ fixing "East Asian Ambiguous Width chars" problem.
 How to build
 ---------------------------------------------------------------------
 
-Required packages: autoconf, automake, libtool
+Required packages: autoconf, automake, libtool, make, cc (gcc or misc)
 
-    $ autoconf -vfi
+    $ autoreconf --install
     $ configure --prefix=/usr/local/
     $ make
     $ sudo make install
