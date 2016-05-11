@@ -4,8 +4,8 @@
 AC_PREREQ([2.69])
 AC_INIT([wcwidth-cjk], [0.99])
 AM_INIT_AUTOMAKE([foreign])
+AC_CONFIG_MACRO_DIRS([m4])
 AC_CONFIG_SRCDIR([wcwidth.c])
-AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_FILES([wcwidth-cjk], [chmod +x wcwidth-cjk])
 
 # Checks for programs.
