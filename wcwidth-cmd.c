@@ -16,6 +16,8 @@ int main(int argc, char **argv) {
   char *mb_buf;
   wchar_t wc;
   int wc_width;
+  unsigned char *wc_p;
+  int wc_p_i;
 
   if (argc < 2) {
     printf("Usage: %s STRING [...]\n", argv[0]);
@@ -47,7 +49,11 @@ int main(int argc, char **argv) {
       strncpy(mb_buf, mb_p, mb_consumed);
       mb_buf[mb_consumed] = '\0';
 
-      printf("%d\t%s\n", wc_width, mb_buf);
+      printf("%d\t%s\t", wc_width, mb_buf);
+      for (wc_p = (char *)&wc, wc_p_i = 0; wc_p_i < sizeof(wchar_t); wc_p_i++) {
+	printf("%02X ", *(wc_p + wc_p_i));
+      }
+      puts("");
 
       mb_p += mb_consumed;
       mb_len -= mb_consumed;
