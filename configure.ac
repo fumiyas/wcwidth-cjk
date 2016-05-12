@@ -32,16 +32,16 @@ AC_CANONICAL_HOST
 # Check for which host we are on and setup a few things
 # specifically based on the host
 case $host_os in
-    darwin* )
-        AC_SUBST(LD_PRELOAD, DYLD_INSERT_LIBRARIES)
-        AC_SUBST(DYLD_FORCE_FLAT_NAMESPACE, DYLD_FORCE_FLAT_NAMESPACE)
-        AC_SUBST(SHARED_LIB_EXT, dylib)
-        ;;
-    *)
-        AC_SUBST(LD_PRELOAD, LD_PRELOAD)
-        AC_SUBST(DYLD_FORCE_FLAT_NAMESPACE, '')
-        AC_SUBST(SHARED_LIB_EXT, so)
-        ;;
+darwin*)
+  AC_SUBST(LD_PRELOAD, DYLD_INSERT_LIBRARIES)
+  AC_SUBST(DYLD_FORCE_FLAT_NAMESPACE, DYLD_FORCE_FLAT_NAMESPACE)
+  AC_SUBST(SHARED_LIB_EXT, dylib)
+  ;;
+*)
+  AC_SUBST(LD_PRELOAD, LD_PRELOAD)
+  AC_SUBST(DYLD_FORCE_FLAT_NAMESPACE, '')
+  AC_SUBST(SHARED_LIB_EXT, so)
+  ;;
 esac
 
 AC_CONFIG_FILES([Makefile])
