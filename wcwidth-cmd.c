@@ -1,5 +1,7 @@
 #define _XOPEN_SOURCE
 
+#define is_little_endian() (1 == *(unsigned char *)&(const int){1})
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,6 +9,24 @@
 #include <alloca.h>
 #include <locale.h>
 #include <wchar.h>
+
+void dump_bigendian(void *p_in, int size) {
+  unsigned char *p;
+  int i;
+
+  for (p = p_in, i = 0; i < size; i++) {
+    printf(" %02X", *(p + i));
+  }
+}
+
+void dump_littleendian(void *p_in, int size) {
+  unsigned char *p;
+  int i;
+
+  for (p = p_in, i = size - 1; i >= 0; i--) {
+    printf(" %02X", *(p + i));
+  }
+}
 
 int main(int argc, char **argv) {
   int i;
@@ -16,8 +36,9 @@ int main(int argc, char **argv) {
   char *mb_buf;
   wchar_t wc;
   int wc_width;
-  unsigned char *wc_p;
-  int wc_p_i;
+
+  void (*dump)(void *p_in, int size) =
+    is_little_endian() ? dump_littleendian : dump_bigendian;
 
   if (argc < 2) {
     printf("Usage: %s STRING [...]\n", argv[0]);
@@ -49,15 +70,15 @@ int main(int argc, char **argv) {
       strncpy(mb_buf, mb_p, mb_consumed);
       mb_buf[mb_consumed] = '\0';
 
-      printf("%d\t%s\t", wc_width, mb_buf);
-      for (wc_p = (char *)&wc, wc_p_i = 0; wc_p_i < sizeof(wchar_t); wc_p_i++) {
-	printf("%02X ", *(wc_p + wc_p_i));
-      }
-      puts("");
+      printf("%d", wc_width);
+      dump(&wc, sizeof(wchar_t));
+      printf("\t%s\n", mb_buf);
 
       mb_p += mb_consumed;
       mb_len -= mb_consumed;
     }
   }
+
+  exit(0);
 }
 
