@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
       mb_consumed = mbtowc(&wc, mb_p, mb_len);
       if (mb_consumed == -1) {
 	fprintf(stderr,
-	  "%s: ERROR: Invalid in multibyte sequence: argv=%d, index=%d, char=0x%2X\n",
+	  "%s: ERROR: Invalid multibyte sequence: argv=%d, index=%d, byte=0x%2X\n",
 	  argv[0],
 	  i,
 	  (int)(mb_p - argv[i]),
