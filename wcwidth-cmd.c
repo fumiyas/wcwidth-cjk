@@ -10,21 +10,21 @@
 #include <locale.h>
 #include <wchar.h>
 
-void dump_bigendian(void *p_in, int size) {
+void dump_bigendian(FILE *fp, void *p_in, int size) {
   unsigned char *p;
   int i;
 
   for (p = p_in, i = 0; i < size; i++) {
-    printf(" %02X", *(p + i));
+    fprintf(fp, " %02X", *(p + i));
   }
 }
 
-void dump_littleendian(void *p_in, int size) {
+void dump_littleendian(FILE *fp, void *p_in, int size) {
   unsigned char *p;
   int i;
 
   for (p = p_in, i = size - 1; i >= 0; i--) {
-    printf(" %02X", *(p + i));
+    fprintf(fp, " %02X", *(p + i));
   }
 }
 
@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
   wchar_t wc;
   int wc_width;
 
-  void (*dump)(void *p_in, int size) =
+  void (*dump)(FILE *fp, void *p_in, int size) =
     is_little_endian() ? dump_littleendian : dump_bigendian;
 
   if (argc < 2) {
@@ -56,12 +56,13 @@ int main(int argc, char **argv) {
       mb_consumed = mbtowc(&wc, mb_p, mb_len);
       if (mb_consumed == -1) {
 	fprintf(stderr,
-	  "%s: ERROR: Invalid multibyte sequence: argv=%d, index=%d, byte=0x%2X\n",
+	  "%s: ERROR: Invalid multibyte sequence: argv=%d, index=%d, bytes:",
 	  argv[0],
 	  i,
-	  (int)(mb_p - argv[i]),
-	  *(unsigned char *)mb_p
+	  (int)(mb_p - argv[i])
 	);
+	dump_bigendian(stderr, mb_p, mb_len);
+	fputs("\n", stderr);
 	exit(1);
       }
 
@@ -71,7 +72,7 @@ int main(int argc, char **argv) {
       mb_buf[mb_consumed] = '\0';
 
       printf("%d", wc_width);
-      dump(&wc, sizeof(wchar_t));
+      dump(stdout, &wc, sizeof(wchar_t));
       printf("\t%s\n", mb_buf);
 
       mb_p += mb_consumed;
