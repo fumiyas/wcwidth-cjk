@@ -5,7 +5,7 @@ exec_prefix=@exec_prefix@
 bindir=@bindir@
 libdir=@libdir@
 
-wcwidth_cjk_so="$libdir/libwcwidth-cjk.@SHARED_LIB_EXT@"
+wcwidth_cjk_so="$libdir/wcwidth-cjk.@SHARED_LIB_EXT@"
 
 if [ $# -lt 1 ]; then
   echo "Usage: $0 COMMAND [ARGUMENT ...]" 1>&2
