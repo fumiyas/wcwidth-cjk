@@ -21,7 +21,7 @@
  */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <wchar.h>
@@ -270,19 +270,23 @@ int wcwidth_cjk(wchar_t ucs)
     { 0xfffd, 0xfffd }, { 0xf0000, 0xffffd }, { 0x100000, 0x10fffd }
   };
 
+#ifdef JA_LEGACY
   /* For Japanese legacy encodings, the following characters are added. */
   static const struct interval legacy_ja[] = {
     { 0x00A2, 0x00A3 }, { 0x00A5, 0x00A6 }, { 0x00AC, 0x00AC },
     { 0x00AF, 0x00AF }, { 0x2212, 0x2212 }
   };
+#endif /* JA_LEGACY */
 
   /* binary search in table of non-spacing characters */
   if (bisearch(ucs, ambiguous,
               sizeof(ambiguous) / sizeof(struct interval) - 1))
     return 2;
+#ifdef JA_LEGACY
   if (bisearch(ucs, legacy_ja,
               sizeof(legacy_ja) / sizeof(struct interval) - 1))
     return 2;
+#endif /* JA_LEGACY */
 
   return wcwidth_ucs(ucs);
 }
