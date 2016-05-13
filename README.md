@@ -11,7 +11,7 @@ What's this?
 
 This is a `$LD_PRELOAD`-able library and a wrapper script to
 run a command with CJK-friendly `wcwidth`(3) implementation for
-fixing "East Asian Ambiguous Width chars" problem.
+fixing "East Asian Ambiguous Width Characters" problem.
 
 日本語 (In Japanese): 「East Asian Ambiguous Width chars 問題」を
 解決するための `$LD_PRELOAD` 可能な共有ライブラリーとラッパー
@@ -35,18 +35,30 @@ Usage
 Run a command with `$LD_PRELOAD`-able library:
 
     $ export LD_PRELOAD=/usr/local/lib/wcwidth-cjk.so
-    $ zsh
+    $ exec zsh -l
     ...
 
 or:
 
     $ eval `/usr/local/bin/wcwidth-cjk --sh-init`
-    $ zsh
+    $ exec zsh -l
     ...
 
 Run a command via wrapper script:
 
-    $ /usr/local/bin/wcwidth-cjk zsh
+    $ /usr/local/bin/wcwidth Ab漢α¥
+    1 00 00 00 41   A
+    1 00 00 00 62   b
+    2 00 00 6F 22   漢
+    1 00 00 03 B1   α
+    1 00 00 00 A5   ¥
+    $ /usr/local/bin/wcwidth-cjk /usr/local/bin/wcwidth Ab漢α¥
+    1 00 00 00 41   A
+    1 00 00 00 62   b
+    2 00 00 6F 22   漢
+    2 00 00 03 B1   α
+    1 00 00 00 A5   ¥
+    $ exec /usr/local/bin/wcwidth-cjk zsh -l
     ...
 
 References
