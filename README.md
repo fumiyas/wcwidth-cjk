@@ -82,4 +82,8 @@ References
     + https://twitter.com/ttkzw/status/341960339300159488
   * hamano/locale-eaw: East Asian Ambiguous Width問題の修正ロケール
     * https://github.com/hamano/locale-eaw
+  * Emoji - Wikipedia, the free encyclopedia
+    * https://en.wikipedia.org/wiki/Emoji
+  * uwabami/locale-eaw-emoji: UAX#11 Ambiguous と UTR #51 Emoiji を全角とする修正 locale
+    * https://github.com/uwabami/locale-eaw-emoji
 
