@@ -68,3 +68,6 @@ References
     + https://twitter.com/ttkzw/status/341958235814768640
     + https://twitter.com/ttkzw/status/341954474333581313
     + https://twitter.com/ttkzw/status/341960339300159488
+  * hamano/locale-eaw: East Asian Ambiguous Width問題の修正ロケール
+    * https://github.com/hamano/locale-eaw
+
