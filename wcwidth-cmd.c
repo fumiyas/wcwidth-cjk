@@ -6,7 +6,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#ifdef HAVE_ALLOCA_H
 #include <alloca.h>
+#endif
 #include <locale.h>
 #include <wchar.h>
 

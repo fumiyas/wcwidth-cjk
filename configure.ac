@@ -18,7 +18,7 @@ AC_PROG_LIBTOOL
 # Checks for libraries.
 
 # Checks for header files.
-AC_CHECK_HEADERS([sys/param.h wchar.h])
+AC_CHECK_HEADERS([sys/param.h wchar.h alloca.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_SIZE_T
