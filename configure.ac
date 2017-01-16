@@ -4,7 +4,7 @@
 AC_PREREQ([2.59])
 AC_INIT([wcwidth-cjk], [0.99], [https://github.com/fumiyas/wcwidth-cjk])
 AM_INIT_AUTOMAKE([foreign])
-AC_CONFIG_MACRO_DIRS([m4])
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([wcwidth.c])
 AC_CONFIG_FILES([wcwidth-cjk], [chmod +x wcwidth-cjk])
@@ -18,10 +18,11 @@ AC_PROG_LIBTOOL
 # Checks for libraries.
 
 # Checks for header files.
-AC_CHECK_HEADERS([sys/param.h wchar.h])
+AC_CHECK_HEADERS([sys/param.h wchar.h alloca.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_SIZE_T
+AC_C_BIGENDIAN
 
 # Checks for library functions.
 
