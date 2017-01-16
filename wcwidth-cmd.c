@@ -1,7 +1,5 @@
 #define _XOPEN_SOURCE
 
-#define is_little_endian() (1 == *(unsigned char *)&(const int){1})
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -21,6 +19,7 @@ void dump_bigendian(FILE *fp, void *p_in, int size) {
   }
 }
 
+#ifndef WORDS_BIGENDIAN
 void dump_littleendian(FILE *fp, void *p_in, int size) {
   unsigned char *p;
   int i;
@@ -29,6 +28,7 @@ void dump_littleendian(FILE *fp, void *p_in, int size) {
     fprintf(fp, " %02X", *(p + i));
   }
 }
+#endif
 
 int main(int argc, char **argv) {
   int i;
@@ -38,9 +38,6 @@ int main(int argc, char **argv) {
   char *mb_buf;
   wchar_t wc;
   int wc_width;
-
-  void (*dump)(FILE *fp, void *p_in, int size) =
-    is_little_endian() ? dump_littleendian : dump_bigendian;
 
   if (argc < 2) {
     printf("Usage: %s STRING [...]\n", argv[0]);
@@ -74,7 +71,11 @@ int main(int argc, char **argv) {
       mb_buf[mb_consumed] = '\0';
 
       printf("%d", wc_width);
-      dump(stdout, &wc, sizeof(wchar_t));
+#ifdef WORDS_BIGENDIAN
+      dump_bigendian(stdout, &wc, sizeof(wchar_t));
+#else
+      dump_littleendian(stdout, &wc, sizeof(wchar_t));
+#endif
       printf("\t%s\n", mb_buf);
 
       mb_p += mb_consumed;
