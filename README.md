@@ -25,7 +25,7 @@ How to build
 Required packages: autoconf, automake, libtool, make, cc (gcc or misc)
 
     $ sh autogen.sh
-    $ ./configure --prefix=/usr/local/
+    $ ./configure --prefix=/usr/local
     $ make
     $ sudo make install
 
