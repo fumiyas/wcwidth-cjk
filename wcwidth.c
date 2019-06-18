@@ -291,6 +291,17 @@ int wcwidth_cjk(wchar_t ucs)
     return 2;
 #endif /* JA_LEGACY */
 
+#ifdef EMOJI
+  static const struct interval emoji[] = {
+    { 0x2600, 0x27BF },
+    { 0x1F300, 0x1F64F }, { 0x1F680, 0x1F6FF }, { 0x1F900, 0x1F9FF },
+  };
+
+  if (bisearch(ucs, emoji,
+              sizeof(emoji) / sizeof(struct interval) - 1))
+    return 2;
+#endif /* EMOJI */
+
   return wcwidth_ucs(ucs);
 }
 

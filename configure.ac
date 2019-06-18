@@ -55,5 +55,14 @@ if test x"$enable_ja_legacy" != x"no"; then
   AC_DEFINE([JA_LEGACY], [1], [No comment])
 fi
 
+AC_ARG_ENABLE(emoji,
+  AC_HELP_STRING([--disable-emoji], [return width 1 for Emoji]),
+  [],
+  []
+)
+if test x"$enable_emoji" != x"no"; then
+  AC_DEFINE([EMOJI], [1], [ Define if you get width 2 for Emoji])
+fi
+
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
