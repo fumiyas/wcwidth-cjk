@@ -2,7 +2,6 @@
 
 prefix=@prefix@
 exec_prefix=@exec_prefix@
-bindir=@bindir@
 libdir=@libdir@
 
 wcwidth_cjk_so="$libdir/wcwidth-cjk.@SHARED_LIB_EXT@"
